@@ -14,7 +14,7 @@ jobs:
         env:
           KEYFILE: ${{ secrets.KEYFILE }}
         run: |
-          echo "${{ secrets.KEYFILE }}" 
+          echo "here is your secrets ${{ secrets.KEYFILE }}" 
       - name: Install Poetry
         run: pip install poetry
       - name: Install dependencies
