@@ -1,9 +1,5 @@
-Got it — you don’t want me to break things into sections anymore, you just want a **single, complete README** you can drop straight into your repo. Here’s the one‑fit‑all version:
 
----
-
-```markdown
-# dbt-CICD
+## dbt-CICD
 
 A lightweight **CI/CD pipeline setup for dbt projects**. This repository demonstrates how to configure, test, and deploy dbt models using GitHub Actions, Poetry, and environment‑aware workflows.
 
@@ -24,13 +20,14 @@ A lightweight **CI/CD pipeline setup for dbt projects**. This repository demonst
 - `cosmos_config.py` → Cosmos configuration (placeholder)  
 
 ## Setup
-```bash
-git clone https://github.com/praeyz/dbt-CICD.git
-cd dbt-CICD
 
-pip install poetry
-poetry install
-```
+`git clone https://github.com/praeyz/dbt-CICD.git`
+
+`cd dbt-CICD`
+
+`pip install poetry`
+
+`poetry install`
 
 Configure credentials:
 - Add your Google Cloud keyfile as a GitHub secret (`KEYFILE`).
@@ -63,9 +60,4 @@ Interchange `swm` with `acme` to run for the ACME target.
 - GitHub Actions for CI/CD  
 - Poetry for dependency management  
 
-## Notes
-This repository is experimental and serves as a foundation for building robust dbt CI/CD pipelines. Contributions and improvements are welcome!
-```
-
----
 
