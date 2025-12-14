@@ -33,14 +33,8 @@ jobs:
       - name: Debug swm_dev
         run: poetry run dbt debug -t swm_dev
         
-      - name: Debug swm_prod
-        run: poetry run dbt debug -t swm_prod
-
       - name: Debug acme_dev
         run: poetry run dbt debug -t acme_dev
-
-      - name: Debug acme_prod
-        run: poetry run dbt debug -t acme_prod
 
       - name: Create views for swm
         run: poetry run dbt run --full-refresh -t swm_dev --select tag:swm
