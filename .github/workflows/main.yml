@@ -14,10 +14,7 @@ jobs:
         env:
           KEYFILE: ${{ secrets.KEYFILE }}
         run: |
-          # Write the secret JSON into a file
-          echo "$KEYFILE" > ${{ github.workspace }}/keyfile.json
-          # Point dbt/BigQuery to it
-          echo "GOOGLE_APPLICATION_CREDENTIALS=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
+          echo "${{ secrets.KEYFILE }}" 
       - name: Install Poetry
         run: pip install poetry
       - name: Install dependencies
