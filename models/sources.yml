@@ -1,0 +1,19 @@
+sources:
+    - name: swm
+      schema: swm
+      database: active-mountain-335810
+      tables: 
+        - name: raw_billing_transactions
+          description: the raw billing transactions for swm
+        - name: raw_cash_transactions
+          description: the raw cash transactions for swm
+          
+    - name: acme
+      schema: acme
+      database: active-mountain-335810
+      tables:
+        - name: locations
+          description: the locations of the acme customers
+        - name: products
+          description: the products of the acme customers
+

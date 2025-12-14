@@ -1,0 +1,42 @@
+dbt_models:
+  target: swm_dev #the default target if you run without --target
+  outputs:
+    swm_dev: #now this is the target
+      type: bigquery
+      threads: 16
+      database: sunday-project-testing
+      schema: swm_dev
+      method: service-account
+      location: europe-west3
+      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      dataproc_batch: null
+
+    swm_prod: #now this is the target
+      type: bigquery
+      threads: 16
+      database: active-mountain-335810
+      schema: swm
+      method: service-account
+      location: europe-west3
+      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      dataproc_batch: null
+
+    acme_dev: #now this is the target
+      type: bigquery
+      threads: 16
+      database: sunday-project-testing
+      schema: acme_dev
+      method: service-account
+      location: europe-west3
+      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      dataproc_batch: null
+
+    acme_prod: #now this is the target
+      type: bigquery
+      threads: 16
+      database: active-mountain-335810
+      schema: acme
+      method: service-account
+      location: europe-west3
+      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      dataproc_batch: null

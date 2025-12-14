@@ -1,0 +1,24 @@
+name: dbt_models
+
+profile: dbt_models
+
+seed-paths: ["seeds"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+clean-targets:
+  - "target"
+  - "dbt_models_packages"
+
+seeds:
+  # Builds seeds into '<your_schema_name>_raw'
+  dbt_models:
+    +schema: raw
+
+models:
+  dbt_models:
+    swm:
+      +materialized: "{{ 'table' if target.name == 'swm_prod' else 'view' }}"
+      +tags: ["swm"]
+    acme:
+      +materialized: "{{ 'table' if target.name == 'acme_prod' else 'view' }}"
+      +tags: ["acme"]
