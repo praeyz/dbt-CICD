@@ -1,4 +1,4 @@
-name: dbt Debug
+name: dbt Prod CICD
 on:
   push:
     branches:
@@ -31,8 +31,8 @@ jobs:
         run: poetry run dbt deps
 
       - name: Create tables for swm
-        run: poetry run dbt run -t swm_prod --select tag:swm
+        run: poetry run dbt run --full-refresh && -t swm_prod --select tag:swm
 
       - name: Create tables for acme
-        run: poetry run dbt run -t acme_prod --select tag:acme
+        run: poetry run dbt run --full-referesh -t acme_prod --select tag:acme
 

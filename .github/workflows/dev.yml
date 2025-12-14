@@ -1,4 +1,4 @@
-name: dbt Debug
+name: dbt dev CICD
 on:
   push:
     branches:
@@ -32,8 +32,8 @@ jobs:
         run: poetry run dbt deps
 
       - name: Create views for swm
-        run: poetry run dbt run -t swm_dev --select tag:swm
+        run: poetry run dbt run --full-refresh -t swm_dev --select tag:swm
 
       - name: Create views for acme
-        run: poetry run dbt run -t acme_dev --select tag:acme
+        run: poetry run dbt run --full-refresh -t acme_dev --select tag:acme
 
