@@ -5,7 +5,7 @@ with source as (
 SELECT
     name as location_name,
     opened_at as opened_date,
-    tax_rate
+    ROUND(tax_rate,2)
 FROM 
     source
     
