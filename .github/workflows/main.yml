@@ -1,0 +1,28 @@
+name: dbt Debug
+on:
+  push:
+    branches:
+     - testing
+     - main
+  workflow_dispatch:
+jobs:
+  run-dbt: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure Google credentials
+        env:
+          KEYFILE: ${{ secrets.KEYFILE }}
+        run: |
+          # Write the secret JSON into a file
+          echo "$KEYFILE" > ${{ github.workspace }}/keyfile.json
+          # Point dbt/BigQuery to it
+          echo "GOOGLE_APPLICATION_CREDENTIALS=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
+      - name: Debug swm_dev
+        run: Poetry run dbt debug -t swm_dev
+      - name: Debug swm_prod
+        run: Poetry run dbt debug -t swm_prod
+      - name: Debug acme_dev
+        run: Poetry run dbt debug -t acme_dev
+      - name: Debug acme_prod
+        run: Poetry run dbt debug -t acme_prod
