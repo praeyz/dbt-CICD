@@ -5,7 +5,6 @@ with source as (
       select
         customer_id,
         membership_id,
-        location_id,
         CAST(split(billed_month, "-")[0] as int) as billed_year,
         CAST(split(billed_month, "-")[1] as int) as billed_month,
         amount_usd,
