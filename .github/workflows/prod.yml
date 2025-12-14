@@ -20,23 +20,18 @@ jobs:
             # Export environment variables for subsequent steps
             echo "KEYFILE=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
 
-
-  Debug-connections:
-    runs-on: ubuntu-latest
-    needs: Configurations-and-Env-Variables
-    steps:
-      - uses: actions/checkout@v4
-
       - name: Install Poetry
         run: pip install poetry
 
       - name: Install dependencies
         run: poetry install --no-interaction --no-ansi --no-root
+        
       - name: Install dbt package deps
         run: poetry run dbt deps
 
       - name: Debug swm_dev
         run: poetry run dbt debug -t swm_dev
+
       - name: Debug swm_prod
         run: poetry run dbt debug -t swm_prod
 
@@ -45,11 +40,6 @@ jobs:
 
       - name: Debug acme_prod
         run: poetry run dbt debug -t acme_prod
-  Create-Prod-tables-for-customers:
-    needs: Debug-connections
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
       - name: Create tables for swm
         run: poetry run dbt run --full-refresh -t swm_prod --select tag:swm
