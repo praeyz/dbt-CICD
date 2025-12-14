@@ -20,6 +20,8 @@ jobs:
           echo "GOOGLE_APPLICATION_CREDENTIALS=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
       - name: Install Poetry
         run: pip install poetry
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi
       - name: Debug swm_dev
         run: poetry run dbt debug -t swm_dev
       - name: Debug swm_prod
