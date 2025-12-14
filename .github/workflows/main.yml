@@ -16,15 +16,11 @@ jobs:
           KEYFILE: ${{ secrets.KEYFILE }}
         run: |
           echo '$(secrets.KEYFILE)'
-        #     # Write the secret JSON into a file
-        #     echo "$KEYFILE" > ${{ github.workspace }}/keyfile.json
+            # Write the secret JSON into a file
+            echo "$KEYFILE" > ${{ github.workspace }}/keyfile.json
 
-        #     # Export environment variables for subsequent steps
-        #     echo "KEYFILE=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
-        #     echo "GOOGLE_APPLICATION_CREDENTIALS=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
-
-        #     # Optional: confirm file exists
-        #     ls -l ${{ github.workspace }}/keyfile.json
+            # Export environment variables for subsequent steps
+            echo "KEYFILE=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
 
       - name: Install Poetry
         run: pip install poetry
