@@ -18,6 +18,8 @@ jobs:
           echo "$KEYFILE" > ${{ github.workspace }}/keyfile.json
           # Point dbt/BigQuery to it
           echo "GOOGLE_APPLICATION_CREDENTIALS=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
+      - name: Install Poetry
+        run: pip install poetry
       - name: Debug swm_dev
         run: Poetry run dbt debug -t swm_dev
       - name: Debug swm_prod
