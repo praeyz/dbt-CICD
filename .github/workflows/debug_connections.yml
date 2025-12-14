@@ -6,7 +6,7 @@ on:
      - main
   workflow_dispatch:
 jobs:
-  run-dbt: 
+  dbt-Debug: 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

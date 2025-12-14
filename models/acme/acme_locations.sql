@@ -1,5 +1,5 @@
 with source as (
-    SELECT * from {{source("acme", "locations")}}
+    SELECT * from {{source("acme", "raw_loacations")}}
 )
 
 SELECT

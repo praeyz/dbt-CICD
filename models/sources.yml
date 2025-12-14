@@ -12,8 +12,8 @@ sources:
       schema: acme
       database: active-mountain-335810
       tables:
-        - name: locations
+        - name: raw_loacations
           description: the locations of the acme customers
-        - name: products
+        - name: raw_products
           description: the products of the acme customers
 
