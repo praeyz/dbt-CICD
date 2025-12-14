@@ -8,7 +8,7 @@ dbt_models:
       schema: swm_dev
       method: service-account
       location: europe-west3
-      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      keyfile: "{{ env_var('KEYFILE') }}"
       dataproc_batch: null
 
     swm_prod: #now this is the target
@@ -18,7 +18,7 @@ dbt_models:
       schema: swm
       method: service-account
       location: europe-west3
-      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      keyfile: "{{ env_var('KEYFILE') }}"
       dataproc_batch: null
 
     acme_dev: #now this is the target
@@ -28,7 +28,7 @@ dbt_models:
       schema: acme_dev
       method: service-account
       location: europe-west3
-      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      keyfile: "{{ env_var('KEYFILE') }}"
       dataproc_batch: null
 
     acme_prod: #now this is the target
@@ -38,5 +38,5 @@ dbt_models:
       schema: acme
       method: service-account
       location: europe-west3
-      keyfile: /Users/praeyz/personal/sunday_dbt_workshop/include/gcp/active-mountain-335810-b23e4717ed03.json
+      keyfile: "{{ env_var('KEYFILE') }}"
       dataproc_batch: null
