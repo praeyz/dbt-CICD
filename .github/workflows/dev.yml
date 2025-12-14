@@ -27,6 +27,10 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction --no-ansi --no-root
 
+
+      - name: Install dbt package deps
+        run: poetry run dbt deps
+
       - name: Create views for swm
         run: poetry run dbt run -t swm_dev --select tag:swm
 
