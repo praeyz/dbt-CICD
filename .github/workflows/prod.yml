@@ -20,17 +20,18 @@ jobs:
             # Export environment variables for subsequent steps
             echo "KEYFILE=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
 
-      - name: Install Poetry
-        run: pip install poetry
 
-      - name: Install dependencies
-        run: poetry install --no-interaction --no-ansi --no-root
   Debug-connections:
     runs-on: ubuntu-latest
     needs: Configurations-and-Env-Variables
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi --no-root
       - name: Install dbt package deps
         run: poetry run dbt deps
 
