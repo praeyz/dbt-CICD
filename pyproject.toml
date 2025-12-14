@@ -1,20 +1,16 @@
 [project]
 name = "sunday-dbt-workshop"
 version = "0.1.0"
-description = ""
+description = "dbt Core project for BigQuery"
 authors = [
-    {name = "praise",email = "praise@one-five.com"}
+    { name = "praise", email = "praise@one-five.com" }
 ]
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 dependencies = [
-    "dbt-core (>=1.10.15,<2.0.0)",
-    "dbt-bigquery (>=1.10.3,<2.0.0)",
-    "apache-airflow (==3.0.0)"
+    "dbt-core = ^1.10.0",
+    "dbt-bigquery = ^1.10.0"
 ]
-
-[tool.poetry]
-packages = [{include = "sunday_dbt_workshop", from = "src"}]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
