@@ -1,0 +1,35 @@
+name: dbt Debug
+on:
+  push:
+    branches:
+     - testing
+  workflow_dispatch:
+jobs:
+  run-dbt: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Google credentials
+        env:
+          KEYFILE: ${{ secrets.KEYFILE }}
+        run: |
+          echo '$(secrets.KEYFILE)'
+            # Write the secret JSON into a file
+            echo "$KEYFILE" > ${{ github.workspace }}/keyfile.json
+
+            # Export environment variables for subsequent steps
+            echo "KEYFILE=${{ github.workspace }}/keyfile.json" >> $GITHUB_ENV
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi --no-root
+
+      - name: Create views for swm
+        run: poetry run dbt run -t swm_dev --select tag:swm
+
+      - name: Create views for acme
+        run: poetry run dbt run -t acme_dev --select tag:acme
+
