@@ -12,3 +12,4 @@ DBT_CONFIG = ProfileConfig(
 DBT_PROJECT_CONFIG = ProjectConfig(
     dbt_project_path='/Users/praeyz/personal/sunday_dbt_workshop/include/dbt',
 )
+
